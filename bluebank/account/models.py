@@ -10,6 +10,9 @@ class Account(models.Model):
     phone_number = PhoneNumberField(unique=True, region="IR")
     create_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"{self.full_name}"
+
 
     class Meta:
         constraints = [

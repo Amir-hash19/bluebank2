@@ -11,4 +11,18 @@ class Account(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
 
 
+    class Meta:
+        constraints = [
+            models.CheckConstraint(condition=models.Q(age__gte=18), name="age_gte_18")
+        ]
+
+    class Meta:
+        unique_together =[["full_name", "email"]]
+
+    class Meta:
+        indexes = [
+            models.Index(fields=["full_name"])
+        ]    
+        
+
 

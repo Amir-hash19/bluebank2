@@ -1,13 +1,13 @@
 from django.db import models
 from account.models import Account
+from phonenumber_field.modelfields import PhoneNumberField
 
 
-from django.db import models
 
 class BankAccount(models.Model):
     full_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    phone_number = models.CharField(max_length=15)
+    phone_number = PhoneNumberField(unique=True, region="IR")
     balance = models.DecimalField(max_digits=15, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
 
